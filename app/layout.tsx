@@ -8,10 +8,39 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
+const siteUrl = new URL(
+  'https://perimeteriq-operations-portal.hmj-sk.chatgpt.site',
+);
+const title = 'PerimeterIQ · Operations Portal';
+const description =
+  'Manager and Admin workspace for the PerimeterIQ Smart Manning prototype.';
+
 export const metadata: Metadata = {
-  title: 'PerimeterIQ · Operations Portal',
-  description:
-    'Manager and Admin workspace for the PerimeterIQ Smart Manning prototype.',
+  metadataBase: siteUrl,
+  title,
+  description,
+  alternates: { canonical: siteUrl },
+  openGraph: {
+    type: 'website',
+    url: siteUrl,
+    siteName: 'PerimeterIQ',
+    title,
+    description,
+    images: [
+      {
+        url: new URL('/og.png', siteUrl).toString(),
+        width: 1200,
+        height: 630,
+        alt: 'PerimeterIQ Smart Manning Operations Portal',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+    images: [new URL('/og.png', siteUrl).toString()],
+  },
 };
 
 export default function RootLayout({
